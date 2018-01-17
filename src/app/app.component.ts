@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <h1>Welcome to {{ title }}!</h1>
-    <input type="text" placeholder="Enter the value, please:" #input (keyup)="onKey(input.value)">
+    <input type="text" placeholder="Enter the value, please:" [(ngModel)]="value">
     <div class="currencies" *ngIf="value">
       <p>&#x24;{{value| appCurrency:'usd'}}</p>
       <p>&#8364;{{value| appCurrency:'eur'}}</p>
@@ -14,9 +14,6 @@ import { Component } from '@angular/core';
   `,
 })
 export class AppComponent {
-  title = 'app';
+  title = 'pipe app';
   value = '';
-  onKey(str: string) {
-    this.value = str;
-  }
 }
