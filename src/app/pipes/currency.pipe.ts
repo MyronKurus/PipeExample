@@ -5,17 +5,18 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 
 export class CurrenciesPipe implements PipeTransform {
-  transform(value: any, currency: string): any {
+  transform(value: any, currency: string, position: string = 'left'): any {
     switch (currency) {
       case 'usd':
-        return convertCurrency(value, 2);
+        return '\u0024' + convertCurrency(value, 2);
       case 'eur':
-        return convertCurrency(value, 3);
+        return '\u20AC' + convertCurrency(value, 3);
       case 'pln':
-        return convertCurrency(value, 4);
+        return (position === 'left') ? 'zł' + convertCurrency(value, 4) : convertCurrency(value, 4) + 'zł';
       case 'btc':
-        return convertCurrency(value, 8);
-      default: return value;
+        return (position === 'left') ? '\u20BF' + convertCurrency(value, 8) : convertCurrency(value, 8) + '\u20BF';
+      default: return !(position === 'left') ? convertCurrency(value, 2) + currency.toUpperCase() :
+                                                currency.toUpperCase() + convertCurrency(value, 2);
     }
   }
 }

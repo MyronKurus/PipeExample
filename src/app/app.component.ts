@@ -6,10 +6,12 @@ import { Component } from '@angular/core';
     <h1>Welcome to {{ title }}!</h1>
     <input type="text" placeholder="Enter the value, please:" [(ngModel)]="value">
     <div class="currencies" *ngIf="value">
-      <p>&#x24;{{value| appCurrency:'usd'}}</p>
-      <p>&#8364;{{value| appCurrency:'eur'}}</p>
-      <p>{{value| appCurrency:'pln'}}zł</p>
-      <p>{{value| appCurrency:'btc'}}&#8383;</p>
+      <p>{{value| appCurrency:'usd'}}</p>
+      <p>{{value| appCurrency:'eur'}}</p>
+      <p>{{value| appCurrency:'pln':'right'}}</p>
+      <p>{{value| appCurrency:'btc'}}</p>
+      <p>{{value| appCurrency:'uah'}}</p>
+      <p>{{value| appCurrency:'uah':'right'}}</p>
     </div>
   `,
 })
